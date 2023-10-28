@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+// import Contact from "./components/Contact";
 import Contact from "./components/Contact";
 
 function App() {
