@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import ContactsList from "./ContactsList";
 
 const Contact = () => {
+    const [contacts, setContacts] = useState([]);
     const [contact, setContact] = useState({
         name: "",
         lastName: "",
@@ -15,7 +17,13 @@ const Contact = () => {
     };
 
     const addHandler = () => {
-        console.log(contact);
+        setContacts((contacts) => [...contacts, contact]);
+        setContact({
+            name: "",
+            lastName: "",
+            email: "",
+            phone: "",
+        });
     };
 
     return (
@@ -27,7 +35,7 @@ const Contact = () => {
                     placeholder="Name"
                     name="name"
                     value={contact.name}
-                    onCHange={changeHandler}
+                    onChange={changeHandler}
                 />
                 <input
                     className="border text-red-200 p-1 rounded-md m-1"
@@ -35,7 +43,7 @@ const Contact = () => {
                     placeholder="Last Name"
                     name="lastName"
                     value={contact.lastName}
-                    onCHange={changeHandler}
+                    onChange={changeHandler}
                 />
                 <input
                     className="border text-red-200 p-1 rounded-md m-1"
@@ -43,7 +51,7 @@ const Contact = () => {
                     placeholder="Email"
                     name="email"
                     value={contact.email}
-                    onCHange={changeHandler}
+                    onChange={changeHandler}
                 />
                 <input
                     className="border text-red-200 p-1 rounded-md m-1"
@@ -51,7 +59,7 @@ const Contact = () => {
                     placeholder="Phone"
                     name="number"
                     value={contact.number}
-                    onCHange={changeHandler}
+                    onChange={changeHandler}
                 />
                 <button
                     className="border items-center p-1 bg-blue-400 rounded-md m-1 hover:bg-blue-600"
@@ -60,6 +68,7 @@ const Contact = () => {
                     Add Contact
                 </button>
             </div>
+            <ContactsList contacts={contacts} />
         </div>
     );
 };
