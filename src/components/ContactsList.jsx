@@ -1,4 +1,6 @@
 import React from "react";
+import ContactItem from "./ContactItem";
+
 const ContactsList = ({ contacts }) => {
     console.log(contacts);
     return (
@@ -8,23 +10,7 @@ const ContactsList = ({ contacts }) => {
                 {contacts.length ? (
                     <ul>
                         {contacts.map((contact) => (
-                            <li key={contact.id}>
-                                <p>
-                                    {contact.name} {contact.lastName}
-                                </p>
-                                <p>
-                                    <span>📬</span>
-                                    {contact.email}
-                                </p>
-                                <p>
-                                    <span>📞</span>
-                                    {contact.phone}
-                                </p>
-                                <p>
-                                    <span>🗑️</span>
-                                    {contact.email}
-                                </p>
-                            </li>
+                            <ContactItem key={contact.id} data={contact} />
                         ))}
                     </ul>
                 ) : (
