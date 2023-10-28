@@ -3,13 +3,6 @@ import ContactsList from "./ContactsList";
 import inputs from "../constants/inputs";
 import { v4 } from "uuid";
 
-// const inputs = [
-//     { type: text, name: "name", placeholder: "Name" },
-//     { type: text, name: "lastName", placeholder: "Last Name" },
-//     { type: email, name: "email", placeholder: "Email" },
-//     { type: number, name: "phone", placeholder: "PhoneNumber" },
-// ];
-
 const Contact = () => {
     const [contacts, setContacts] = useState([]);
     const [alert, setAlert] = useState("");
@@ -20,6 +13,11 @@ const Contact = () => {
         email: "",
         phone: "",
     });
+
+    const deleteHandler = (id) => {
+        const NewContacts = contacts.filter((contact) => contact.id !== id);
+        setContacts(NewContacts);
+    };
 
     const changeHandler = (event) => {
         const name = event.target.name;
@@ -56,7 +54,7 @@ const Contact = () => {
                         type={input.type}
                         placeholder={input.placeholder}
                         name={input.name}
-                        value={contact[name]}
+                        value={contact[input.name]}
                         onChange={changeHandler}
                     />
                 ))}
@@ -68,7 +66,7 @@ const Contact = () => {
                 </button>
             </div>
             <div>{alert && <p>{alert}</p>}</div>
-            <ContactsList contacts={contacts} />
+            <ContactsList contacts={contacts} deleteHandler={deleteHandler} />
         </div>
     );
 };
