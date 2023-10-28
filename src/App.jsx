@@ -1,8 +1,10 @@
+import Header from "./components/Header";
+
 function App() {
     return (
-        <>
-            <h1>Contact App</h1>
-        </>
+        <div className="min-h-screen p-10 ">
+            <Header />
+        </div>
     );
 }
 
